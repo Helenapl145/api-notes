@@ -44,18 +44,13 @@ app.use((error, request, response, next) => {
 })
 
 
-app.get('/mensagem/:id', (req, res) => {
-    res.send(`id da mensagem: ${req.params.id}`)
-})
-
-
-app.get('/users', (req, res) => {
-    const {page, limit} = req.query;
-
-    res.send(`Página ${page}, Mostrar ${limit}`)
-})
-
-
 
 const PORT = process.env.PORT || 3333;
+
+app.get('/users', (req, res) => {
+    res.send('Server is running', PORT)
+})
+
+
+
 app.listen(PORT, () => console.log(`Server is running on Port ${PORT}`)); 
