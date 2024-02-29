@@ -8,7 +8,8 @@
   "scripts": {
     "start": "node /src/server.js",
     "dev": "nodemon ./src/server.js",
-    "migrate": "knex migrate:latest"
+    "migrate": "knex migrate:latest",
+    "vercel-build": "npm run migrate"
   },
   "author": "Helena Lima",
   "license": "ISC",
