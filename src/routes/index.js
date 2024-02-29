@@ -1,9 +1,9 @@
 //responsável por chamar todas as rotas
 
 const {Router} = require("express")
-const userRouter = require("./users.Routes.js")
+const userRouter = require("./users.routes.js")
 const notesRouter = require("./notes.routes.js")
-const tagsRoutes = require("./tags.Routes.js")
+const tagsRoutes = require("./tags.routes.js")
 const sessionsRouter = require("./sessions.routes.js")
 
 const routes = Router()
