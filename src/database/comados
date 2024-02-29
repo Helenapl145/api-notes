@@ -1,0 +1,14 @@
+INSERT INTO users 
+(name, email, password)
+VALUES 
+('Gui', 'gui-9089@gmail.com', '5678');
+
+SELECT * FROM users;
+SELECT id, name, email FROM users
+
+UPDATE users SET
+avatar = 'helena.png' 
+WHERE id = 1
+
+DELETE FROM users
+WHERE id = 3
