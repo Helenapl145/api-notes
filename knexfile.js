@@ -2,10 +2,14 @@ const path = require("path")
 
 
 module.exports = {
-  development: {
-    client: 'sqlite3',
+  production: {
+    client: 'mysql',
     connection: {
-      filename: path.resolve(__dirname, "src", "database", "database.db")
+      host: 'monorail.proxy.rlwy.net',
+      port: '25230',
+      database: 'railway',
+      user: 'railway',
+      password: 'CChGa4F4dfA4ahH-BBeBeAGGAf14DhBb'
     },
     migrations: {
       directory: path.resolve(__dirname, "src", "database", "knex", "migrations")
