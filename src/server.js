@@ -45,12 +45,12 @@ app.use((error, request, response, next) => {
 
 
 
-const PORT = process.env.PORT || 3333;
+
 
 app.get('/users', (req, res) => {
-    res.send('Server is running', PORT)
+    res.send('Server is running')
 })
 
-
+const PORT = process.env.PORT || 3333;
 
 app.listen(PORT, () => console.log(`Server is running on Port ${PORT}`)); 
