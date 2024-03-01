@@ -4,12 +4,15 @@ require("express-async-errors")
 const cors = require("cors")
 const express = require("express")
 
-const migrationRun = require("./database/sqlite/migrations")
+
 const AppError = require("./utils/AppError")
 const uploadConfig = require("./configs/upload")
 
 
 const routes = require("./routes")
+
+const db = require('./database/knex/index');
+
 
 const corsOptions = {
     origin: "http://localhost:5173", // Permitir apenas solicitações originadas de http://localhost:5173
@@ -17,9 +20,6 @@ const corsOptions = {
     credentials: true, // Permitir envio de cookies
   }
   
-
-
-migrationRun()
 
 const app = express()
 app.use(cors(corsOptions))
@@ -47,12 +47,19 @@ app.use((error, request, response, next) => {
 
 
 
-
-
 app.get('/users', (req, res) => {
     res.send('Server is running')
 })
 
 const PORT = process.env.PORT || 3333;
 
-app.listen(PORT, () => console.log(`Server is running on Port ${PORT}`)); 
+app.listen(PORT, async () => {
+    console.log(`Server is running on Port ${PORT}`);
+    
+    try {
+        await db.migrate.latest();
+        console.log('Migrations executed successfully');
+    } catch (error) {
+        console.error('Error executing migrations:', error);
+    }
+});
