@@ -8,19 +8,21 @@ const migrationRun = require("./database/sqlite/migrations")
 const AppError = require("./utils/AppError")
 const uploadConfig = require("./configs/upload")
 
-/* uma das formas de importar sem usar outro arquivo, porém vai precisar importar uma rota de cada vez
-        const userRoutes = require('./routes/userRoutes.js')
-*/
 
-
-//dessa forma um arquivo fica responsável por chamar todas as rotas de uma vez
 const routes = require("./routes")
+
+const corsOptions = {
+    origin: "http://localhost:5173", // Permitir apenas solicitações originadas de http://localhost:5173
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE", // Métodos permitidos
+    credentials: true, // Permitir envio de cookies
+  }
+  
 
 
 migrationRun()
 
 const app = express()
-app.use(cors())
+app.use(cors(corsOptions))
 app.use(express.json())
 
 app.use("/files", express.static(uploadConfig.UPLOADS_FOLDER))
