@@ -1,7 +1,7 @@
 require("dotenv/config")
 require("express-async-errors")
 
-const cors = require("cors")
+
 const express = require("express")
 
 const migrationRun = require("./database/sqlite/migrations")
@@ -11,18 +11,11 @@ const uploadConfig = require("./configs/upload")
 
 const routes = require("./routes")
 
-const corsOptions = {
-    origin: "http://localhost:5173", // Permitir apenas solicitações originadas de http://localhost:5173
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE", // Métodos permitidos
-    credentials: true, // Permitir envio de cookies
-  }
-  
-
 
 migrationRun()
 
 const app = express()
-app.use(cors(corsOptions))
+
 app.use(express.json())
 
 app.use("/files", express.static(uploadConfig.UPLOADS_FOLDER))
