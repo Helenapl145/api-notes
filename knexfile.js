@@ -3,7 +3,7 @@ const path = require("path")
 
 module.exports = {
   production: {
-    client: 'mysql',
+    client: 'sqlite3',
     connection: {
       host: 'monorail.proxy.rlwy.net',
       port: '25230',
