@@ -8,8 +8,8 @@ module.exports = {
       host: 'monorail.proxy.rlwy.net',
       port: '25230',
       database: 'railway',
-      user: 'railway',
-      password: 'CChGa4F4dfA4ahH-BBeBeAGGAf14DhBb'
+      user: 'root',
+      password: 'pCChGa4F4dfA4ahH-BBeBeAGGAf14DhBb'
     },
     migrations: {
       directory: path.resolve(__dirname, "src", "database", "knex", "migrations")
