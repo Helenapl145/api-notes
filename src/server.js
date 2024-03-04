@@ -47,10 +47,6 @@ app.use((error, request, response, next) => {
 
 
 
-app.get('/users', (req, res) => {
-    res.send('Server is running')
-})
-
 const PORT = process.env.PORT || 3333;
 
 app.listen(PORT, async () => {
