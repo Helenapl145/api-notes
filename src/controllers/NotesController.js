@@ -81,6 +81,7 @@ class NotesController{
             .innerJoin("notes", "notes.id", "tags.id")
             .groupBy("notes.id")
             .orderBy("notes.title")
+            .collate('utf8mb4_unicode_ci')
 
              
         }else{  
@@ -88,6 +89,7 @@ class NotesController{
             .where({user_id})
             .whereLike('title', `%${title}%`)
             .orderBy("title")
+            .collate('utf8mb4_unicode_ci')
     
         }
 
