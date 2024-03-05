@@ -41,17 +41,22 @@ class NotesController{
     async show(request, response){
         const { id } = request.params;
 
+        const note = await knex.raw(`
+          SELECT * FROM notes
+          WHERE id = :id COLLATE utf8mb4_unicode_ci
+          LIMIT 1
+        `, { id });
         
-        const note = await knex("notes").where({ id }).collate('utf8mb4_unicode_ci').first();
-        const tags = await knex("tags").where({note_id: id}).orderBy("name");
-        const links = await knex("links").where({note_id: id}).orderBy("updated_at");
-    
-        console.log(note)
+        const tags = await knex("tags").where({ note_id: id }).orderBy("name");
+        const links = await knex("links").where({ note_id: id }).orderBy("updated_at");
+        
+        console.log(note[0]);
         return response.json({
-            ...note,
-            tags, 
-            links, 
+          ...note[0],
+          tags,
+          links,
         });
+        
     }
 
     async delete(request, response){
