@@ -48,9 +48,11 @@ class NotesController{
         
         console.log(note);
         return response.json({
-          ...note,
-          tags,
-          links,
+            id: note.id, 
+            name: note.name, 
+            description: note.description,
+            tags,
+            links,
         });
         
     }
