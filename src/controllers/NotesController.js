@@ -45,7 +45,6 @@ class NotesController{
         .where({ user_id: id })
         .andWhere("title", "like", "%%")
         .orderBy("title", "asc")
-        .collate("utf8mb4_bin") // Usando a colação utf8mb4_bin
         .first();
       
         console.log(note);
