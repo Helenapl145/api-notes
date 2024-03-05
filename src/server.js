@@ -15,7 +15,7 @@ const db = require('./database/knex/index');
 
 
 const corsOptions = {
-    origin: "http://localhost:5173", // Permitir apenas solicitações originadas de http://localhost:5173
+    origin: "https://rockeat-notes.vercel.app", // http://localhost:5173
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE", // Métodos permitidos
     credentials: true, // Permitir envio de cookies
   }
