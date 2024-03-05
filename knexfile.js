@@ -5,11 +5,11 @@ module.exports = {
   development: {
     client: 'mysql2',
     connection: {
-      host: 'roundhouse.proxy.rlwy.net',
-      port: '38238',
+      host: 'monorail.proxy.rlwy.net',
+      port: '55768',
       database: 'railway',
       user: 'root',
-      password: 'D35aGaFc1H6hAb5h3hFGA2h2aHFbHF5E'
+      password: 'BBgA5aff5dCA3c6--DGH2FCBAfA-C-Fh'
     },
     migrations: {
       directory: path.resolve(__dirname, "src", "database", "knex", "migrations")
