@@ -46,6 +46,7 @@ class NotesController{
         const tags = await knex("tags").where({note_id: id}).orderBy("name");
         const links = await knex("links").where({note_id: id}).orderBy("updated_at");
     
+        console.log(note)
         return response.json({
             ...note,
             tags, 
@@ -81,7 +82,6 @@ class NotesController{
             .innerJoin("notes", "notes.id", "tags.id")
             .groupBy("notes.id")
             .orderBy("notes.title")
-            .collate('utf8mb4_unicode_ci')
 
              
         }else{  
@@ -89,8 +89,6 @@ class NotesController{
             .where({user_id})
             .whereLike('title', `%${title}%`)
             .orderBy("title")
-            .collate('utf8mb4_unicode_ci')
-    
         }
 
         const userTags = await knex("tags").where({ user_id })
