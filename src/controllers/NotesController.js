@@ -46,7 +46,7 @@ class NotesController{
         const tags = await knex("tags").where({ note_id: id }).orderBy("name");
         const links = await knex("links").where({ note_id: id }).orderBy("updated_at");
         
-        console.log(note);
+        console.log(tags);
         return response.json({
           ...note,
           tags,
