@@ -21,3 +21,17 @@ module.exports = {
 pool: {
   afterCreate: (conn, cb) => conn.run("PRAGMA foreign_keys = ON", cb)
 }, */
+
+
+const knexInstance = knex(knexConfig);
+
+// Executa a consulta SQL para alterar a colação da coluna
+knexInstance.raw('ALTER TABLE notes MODIFY title VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;')
+  .then(() => {
+    console.log('Colação da coluna "title" alterada com sucesso.');
+    knexInstance.destroy(); // Fecha a conexão com o banco de dados
+  })
+  .catch((error) => {
+    console.error('Erro ao alterar a colação da coluna "title":', error);
+    knexInstance.destroy(); // Fecha a conexão com o banco de dados
+  });
