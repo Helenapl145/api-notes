@@ -18,7 +18,7 @@
 <br>
 
 <p align="center">
-  <img alt="projeto notes" src="./src/assets/preview.png">
+  <img alt="projeto notes" src="./public/preview.png">
 </p>
 
 ## 🚀 Tecnologias
